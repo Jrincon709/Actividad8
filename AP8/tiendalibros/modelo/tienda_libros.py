@@ -29,10 +29,10 @@ class TiendaLibros:
         if libro.existencias == 0:
             raise LibroAgotadoError(libro)
 
-        elif cantidades_a_comprar > libro.existencias:
-            raise ExistenciasInsuficientesError(libro)
+        if cantidades_a_comprar > libro.existencias:
+            raise ExistenciasInsuficientesError(libro,cantidades_a_comprar)
 
-        else:
+        for _ in range(cantidades_a_comprar):
             self.carrito.append(libro)
 
 
@@ -41,4 +41,6 @@ class TiendaLibros:
 
 
 
-    # Defina metodo retirar_item_de_carrito
+    @staticmethod
+    def retirar_item_de_carrito(isbn:int):
+        return CarroCompras.quitar_item(isbn)
