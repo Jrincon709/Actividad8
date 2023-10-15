@@ -13,8 +13,8 @@ class TiendaLibros:
 
 
 
-    @staticmethod
-    def adicionar_libro_catalogo(isbn:str, titulo:str, precio:float, existencias:int):
+
+    def adicionar_libro_catalogo(self,isbn:str, titulo:str, precio:float, existencias:int):
 
         if isbn in TiendaLibros.Catalogo:
             libro_existente = TiendaLibros.Catalogo[isbn]
@@ -41,6 +41,5 @@ class TiendaLibros:
 
 
 
-    @staticmethod
-    def retirar_item_de_carrito(isbn:int):
-        return CarroCompras.quitar_item(isbn)
+    def retirar_item_de_carrito(self,isbn:int):
+        self.carrito.quitar_item(isbn)
